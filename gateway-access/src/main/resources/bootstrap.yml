@@ -1,0 +1,22 @@
+server:
+  port: 12357
+spring:
+  application:
+    name: sn-gateway-server
+  profiles:
+    activ: @env@
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: xxx
+        uri: lb://xxxxx
+        predicates:
+          - Path=/app/**
+        filters:
+          - StripPrefix= 1
+    nacos:
+      discovery:
+        server-addr: @MyDefaultZone@

@@ -1,0 +1,35 @@
+<assembly>
+  <id>assembly</id>
+  <formats>
+    <format>tar.gz</format>
+    <format>dir</format>
+  </formats>
+  <includeBaseDirectory>true</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <directory>src/main/assembly/conf</directory>
+      <outputDirectory>conf</outputDirectory>
+      <fileMode>0644</fileMode>
+    </fileSet>
+    <fileSet>
+      <directory>src/main/assembly/bin</directory>
+      <outputDirectory>bin</outputDirectory>
+      <fileMode>0755</fileMode>
+      <includes>
+        <include>dump.sh</include>
+        <include>env.sh</include>
+        <include>restart.sh</include>
+        <include>server.sh</include>
+        <include>stop.sh</include>
+        <include>start-${env}.sh</include>
+      </includes>
+    </fileSet>
+    <fileSet>
+      <directory>target</directory>
+      <outputDirectory>.</outputDirectory>
+      <includes>
+        <include>sn-pay-gateway.jar</include>
+      </includes>
+    </fileSet>
+  </fileSets>
+</assembly>

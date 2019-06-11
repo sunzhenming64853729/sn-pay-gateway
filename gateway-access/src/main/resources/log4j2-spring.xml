@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--设置log4j2的自身log级别为error-->
+<configuration status="error">
+
+    <Properties>
+        <Property name="dir">/opt/export/log/sn-pay-gateway</Property>
+        <Property name="systemName">sn-pay-gateway</Property>
+        <Property name="logPattern">[${systemName}]-[%d{yyyy-MM-dd HH:mm:ss:SSS}]-[%t]-[%C:%L]-[${systemName},%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-Span-Export}]-[%-5p]-[%m]%n</Property>
+    </Properties>
+
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${logPattern}"/>
+        </console>
+
+        <RollingRandomAccessFile name="RollingFileInfo" fileName="${dir}/${systemName}-info.log"
+                                 filePattern="${dir}/${systemName}-info-%d{yyyy-MM-dd-HH}-%i.log">
+            <!-- 输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <!--<ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />-->
+            <PatternLayout charset="UTF-8" pattern="${logPattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="150MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="260"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="RollingFileError" fileName="${dir}/${systemName}-error.log"
+                                 filePattern="${dir}/${systemName}-error-%d{yyyy-MM-dd-HH}-%i.log">
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout charset="UTF-8" pattern="${logPattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="150MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="260"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="RollingFileWarn" fileName="${dir}/${systemName}-warn.log"
+                                 filePattern="${dir}/${systemName}-warn-%d{yyyy-MM-dd-HH}-%i.log">
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL" />
+            </Filters>
+            <PatternLayout charset="UTF-8" pattern="${logPattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="150MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="RollingFileOther" fileName="${dir}/${systemName}-other.log"
+                                 filePattern="${dir}/${systemName}-other-%d{yyyy-MM-dd-HH}-%i.log">
+            <PatternLayout charset="UTF-8" pattern="${logPattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="150MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingRandomAccessFile>
+    </appenders>
+
+    <loggers>
+        <AsyncLogger name="com.sn.pay.gateway" level="info" includeLocation="true" additivity="false">
+            <!--<appender-ref ref="Console"/>-->
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileError"/>
+            <appender-ref ref="RollingFileWarn"/>
+        </AsyncLogger>
+
+        <root includeLocation="true" level="info" additivity="false">
+            <appender-ref ref="RollingFileOther"/>
+        </root>
+
+    </loggers>
+
+</configuration>
