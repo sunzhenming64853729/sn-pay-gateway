@@ -1,7 +1,7 @@
 server:
   port: 8698
   servlet:
-    context-path: /
+    context-path: @servlet.contextPath@
 spring:
   application:
     name: sn-gateway-server
