@@ -4,7 +4,7 @@ spring:
   application:
     name: sn-gateway-server
   profiles:
-    activ: @env@
+    active: @env@
   cloud:
     gateway:
       discovery:
