@@ -58,7 +58,7 @@ else
         mkdir -p $LOGS_DIR
     fi
 fi
-STDOUT_FILE=$LOGS_DIR/mpc-svc-front.out
+STDOUT_FILE=$LOGS_DIR/sn-pay-gateway.out
 
 LIB_DIR=$DEPLOY_DIR
 LIB_JARS=`ls $LIB_DIR|grep .jar|awk '{print "'$LIB_DIR'/"$0}'|tr "\n" ":"`

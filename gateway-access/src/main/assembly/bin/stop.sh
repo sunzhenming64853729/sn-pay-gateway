@@ -2,7 +2,7 @@
 . `dirname $0`/env.sh
 cd $DEPLOY_DIR
 
-SERVER_NAME=`sed '/dubbo.application.name/!d;s/.*=//' conf/dubbo.properties | tr -d '\r'`
+SERVER_NAME=`sed '/app.application.name/!d;s/.*=//' conf/app.properties | tr -d '\r'`
 
 if [ -z "$SERVER_NAME" ]; then
     SERVER_NAME=`hostname`

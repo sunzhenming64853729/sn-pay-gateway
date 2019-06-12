@@ -1,5 +1,5 @@
 server:
-  port: 12357
+  port: 8698
 spring:
   application:
     name: sn-gateway-server
@@ -11,12 +11,18 @@ spring:
         locator:
           enabled: true
       routes:
-      - id: xxx
-        uri: lb://xxxxx
-        predicates:
-          - Path=/app/**
-        filters:
-          - StripPrefix= 1
+        - id: sn-pay-mini-program
+          uri: lb://sn-pay-mini-program
+          predicates:
+            - Path=/mini/**
+          filters:
+            - StripPrefix= 1
+        - id: sn-pay-app
+          uri: lb://sn-pay-app
+          predicates:
+            - Path=/app/**
+          filters:
+            - StripPrefix= 1
     nacos:
       discovery:
-        server-addr: @MyDefaultZone@
+        server-addr: @nacosAddress@
