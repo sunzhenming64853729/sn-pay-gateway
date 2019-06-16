@@ -3,4 +3,4 @@ ribbon:
   ConnectTimeout: @ribbon.ConnectionTimeout@
   MaxAutoRetries: @ribbon.MaxAutoRetries@
   MaxAutoRetriesNextServer: @ribbon.MaxAutoRetriesNextServer@
-  OkToRetryOnAllOperations: false  #是否所有操作都重试
+  OkToRetryOnAllOperations: false

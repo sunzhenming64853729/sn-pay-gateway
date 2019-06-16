@@ -13,8 +13,8 @@
             <PatternLayout pattern="${logPattern}"/>
         </console>
 
-        <RollingRandomAccessFile name="RollingFileInfo" fileName="${dir}/${systemName}-info.log"
-                                 filePattern="${dir}/${systemName}-info-%d{yyyy-MM-dd-HH}-%i.log">
+        <RollingRandomAccessFile name="RollingFileInfo" fileName="${dir}/info-${systemName}.log"
+                                 filePattern="${dir}/info-${systemName}-%d{yyyy-MM-dd-HH}-%i.log">
             <!-- 输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
             <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY" />
             <PatternLayout charset="UTF-8" pattern="${logPattern}"/>
@@ -25,8 +25,8 @@
             <DefaultRolloverStrategy max="260"/>
         </RollingRandomAccessFile>
 
-        <RollingRandomAccessFile name="RollingFileError" fileName="${dir}/${systemName}-error.log"
-                                 filePattern="${dir}/${systemName}-error-%d{yyyy-MM-dd-HH}-%i.log">
+        <RollingRandomAccessFile name="RollingFileError" fileName="${dir}/error-${systemName}.log"
+                                 filePattern="${dir}/error-${systemName}-%d{yyyy-MM-dd-HH}-%i.log">
             <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout charset="UTF-8" pattern="${logPattern}"/>
             <Policies>
@@ -36,8 +36,8 @@
             <DefaultRolloverStrategy max="260"/>
         </RollingRandomAccessFile>
 
-        <RollingRandomAccessFile name="RollingFileWarn" fileName="${dir}/${systemName}-warn.log"
-                                 filePattern="${dir}/${systemName}-warn-%d{yyyy-MM-dd-HH}-%i.log">
+        <RollingRandomAccessFile name="RollingFileWarn" fileName="${dir}/warn-${systemName}.log"
+                                 filePattern="${dir}/warn-${systemName}-%d{yyyy-MM-dd-HH}-%i.log">
             <Filters>
                 <ThresholdFilter level="warn" onMatch="ACCEPT" onMismatch="DENY" />
                 <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL" />
@@ -50,14 +50,14 @@
             <DefaultRolloverStrategy max="100"/>
         </RollingRandomAccessFile>
 
-        <RollingRandomAccessFile name="RollingFileOther" fileName="${dir}/${systemName}-other.log"
-                                 filePattern="${dir}/${systemName}-other-%d{yyyy-MM-dd-HH}-%i.log">
+        <RollingRandomAccessFile name="RollingFileOther" fileName="${dir}/other-${systemName}.log"
+                                 filePattern="${dir}/other-${systemName}-%d{yyyy-MM-dd-HH}-%i.log">
             <PatternLayout charset="UTF-8" pattern="${logPattern}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
                 <SizeBasedTriggeringPolicy size="150MB"/>
             </Policies>
-            <DefaultRolloverStrategy max="30"/>
+            <DefaultRolloverStrategy max="100"/>
         </RollingRandomAccessFile>
     </appenders>
 
