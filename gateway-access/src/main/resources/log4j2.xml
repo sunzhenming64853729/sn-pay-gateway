@@ -3,7 +3,7 @@
 <configuration status="error">
 
     <Properties>
-        <Property name="dir">/opt/export/log/sn-pay-gateway</Property>
+        <Property name="dir">/data/logs/sn-pay-gateway</Property>
         <Property name="systemName">sn-pay-gateway</Property>
         <Property name="logPattern">[${systemName}]-[%d{yyyy-MM-dd HH:mm:ss:SSS}]-[%t]-[%C:%L]-[${systemName},%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-Span-Export}]-[%-5p]-[%m]%n</Property>
     </Properties>
