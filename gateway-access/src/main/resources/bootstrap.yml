@@ -25,6 +25,12 @@ spring:
             - Path=/app/**
           filters:
             - StripPrefix= 1
+        - id: sn-operation
+          uri: lb://sn-operation
+          predicates:
+            - Path=/op/**
+          filters:
+            - StripPrefix= 1
     nacos:
       discovery:
         server-addr: @nacosAddress@
