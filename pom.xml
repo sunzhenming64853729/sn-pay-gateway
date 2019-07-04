@@ -6,7 +6,7 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>gateway-access</module>
+    <module>sn-pay-gateway-access</module>
   </modules>
 
   <parent>
@@ -36,11 +36,6 @@
 
   <dependencies>
 
-<!--    <dependency>-->
-<!--      <groupId>com.alibaba.nacos</groupId>-->
-<!--      <artifactId>nacos-spring-context</artifactId>-->
-<!--      <version>0.2.3-RC1</version>-->
-<!--    </dependency>-->
 
   </dependencies>
 
