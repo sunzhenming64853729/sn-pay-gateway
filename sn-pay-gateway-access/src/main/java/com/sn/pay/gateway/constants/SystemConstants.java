@@ -16,5 +16,7 @@ public class SystemConstants {
 
     public static final String EA001_VALUE = "网关请求业务系统超时";
 
+    public static final String FAIL_MESSAGE = "网关请求超时，请稍后重试！";
+
     public static final String RESPONSE_MSG = "responseMsg";
 }

@@ -31,6 +31,11 @@ spring:
             - Path=/op/**
           filters:
             - StripPrefix= 1
+      default-filters:
+        - name: Hystrix
+          args:
+            name: fallbackcmd
+            fallbackUri: forward:/fallback
     nacos:
       discovery:
         server-addr: @nacosAddress@

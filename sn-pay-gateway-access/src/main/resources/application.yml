@@ -4,3 +4,13 @@ ribbon:
   MaxAutoRetries: @ribbon.MaxAutoRetries@
   MaxAutoRetriesNextServer: @ribbon.MaxAutoRetriesNextServer@
   OkToRetryOnAllOperations: false
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: false
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+

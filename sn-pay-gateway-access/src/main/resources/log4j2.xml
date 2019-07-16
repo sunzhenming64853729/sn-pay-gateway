@@ -63,14 +63,14 @@
 
     <loggers>
         <AsyncLogger name="com.sn.pay" level="info" includeLocation="true" additivity="false">
-            <!--<appender-ref ref="Console"/>-->
+            <appender-ref ref="Console"/>
             <appender-ref ref="RollingFileInfo"/>
             <appender-ref ref="RollingFileError"/>
             <appender-ref ref="RollingFileWarn"/>
         </AsyncLogger>
 
         <AsyncLogger name="org.springframework" level="info" includeLocation="true" additivity="false">
-            <!--<appender-ref ref="Console"/>-->
+            <appender-ref ref="Console"/>
             <appender-ref ref="RollingFileInfo"/>
             <appender-ref ref="RollingFileError"/>
             <appender-ref ref="RollingFileWarn"/>

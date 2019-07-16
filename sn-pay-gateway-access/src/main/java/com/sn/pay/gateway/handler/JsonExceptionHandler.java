@@ -21,8 +21,6 @@ import java.util.Map;
 public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonExceptionHandler.class);
 
-    private static final String FAIL_MESSAGE = "网络超时，请稍后重试！";
-
     public JsonExceptionHandler(ErrorAttributes errorAttributes, ResourceProperties resourceProperties,
                                 ErrorProperties errorProperties, ApplicationContext applicationContext) {
         super(errorAttributes, resourceProperties, errorProperties, applicationContext);
@@ -80,7 +78,7 @@ public class JsonExceptionHandler extends DefaultErrorWebExceptionHandler {
 
         LOGGER.info("JsonExceptionHandler.buildMessage|异常原因{}", message.toString());
 
-        return FAIL_MESSAGE;
+        return SystemConstants.FAIL_MESSAGE;
     }
 
     /**
