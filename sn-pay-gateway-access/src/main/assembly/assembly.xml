@@ -28,7 +28,7 @@
       <directory>target</directory>
       <outputDirectory>apps</outputDirectory>
       <includes>
-        <include>sn-pay-gateway.jar</include>
+        <include>mcht-gateway.jar</include>
       </includes>
     </fileSet>
   </fileSets>
