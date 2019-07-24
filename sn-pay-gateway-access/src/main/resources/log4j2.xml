@@ -77,8 +77,9 @@
         </AsyncLogger>
 
         <root includeLocation="true" level="info" additivity="false">
-        <appender-ref ref="RollingFileOther"/>
-    </root>
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFileOther"/>
+         </root>
 
     </loggers>
 
